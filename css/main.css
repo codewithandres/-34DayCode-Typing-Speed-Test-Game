@@ -1,5 +1,5 @@
 /* google Font Onest*/
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Protest+Revolution&display=swap');
 
 * {
     margin: 0;
@@ -16,7 +16,7 @@
 :root {
     --bg-color: hsl(219, 91%, 4%);
     --bg-secondary-color: hsl(219, 94%, 6%);
-    --color-white: hsl(32, 52%, 94%);
+    --color-white: hsl(30, 13%, 75%);
 }
 
 body {
@@ -25,10 +25,17 @@ body {
     min-height: 100vh;
 
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     flex-direction: column;
     margin: 0 1em;
+}
+
+h1 {
+    font-family: "Protest Revolution", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 4rem;
 }
 
 .wrapper {
@@ -40,6 +47,12 @@ body {
     box-shadow: rgba(27, 27, 29, 0.2) 0px 7px 29px 0px;
 }
 
+.wrapper .input-field {
+    z-index: -999;
+    position: absolute;
+    opacity: 0;
+}
+
 .wrapper .content-box {
     padding: 13px 20px 0;
     border: 1px solid hsla(0, 0%, 47%, 0.712);
@@ -49,9 +62,46 @@ body {
 .typingh-text p {
     font-size: 1rem;
     text-wrap: pretty;
-    text-align: center;
-    letter-spacing: 1px;
+
     word-break: break-all;
+
+}
+
+.typingh-text p span {
+    position: relative;
+}
+
+.typingh-text p span.correct {
+    color: #56964f;
+}
+
+.typingh-text p span.incorrect {
+    color: hsl(342, 98%, 52%);
+    background-color: #ffc0cb;
+    /* outline: 1px solid #ffff; */
+    border-radius: 4px;
+}
+
+.typingh-text p span.active {
+    color: #17abb8;
+}
+
+.typingh-text p span.active::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    opacity: 0;
+    background-color: #17abb8;
+    animation: blink 1s ease-in-out infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 1;
+    }
 }
 
 .typingh-text::-webkit-scrollbar {
@@ -76,7 +126,7 @@ body {
 .content .result-details {
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
+
 
     width: calc(100% - 140px);
 }
@@ -84,9 +134,26 @@ body {
 .result-details li {
     display: flex;
     align-items: center;
+    flex-wrap: nowrap;
 
     list-style: none;
-    height: 22px;
+    /* color: #9e9d9d; */
+    max-height: 22px;
+    background-color: hsla(114, 69%, 50%, 0.356);
+    padding: 1rem;
+    border-radius: .5rem;
+}
+
+.result-details li:nth-child(2) {
+    background-color: hsl(202, 77%, 24%);
+}
+
+.result-details li:nth-child(3) {
+    background-color: hsl(266, 86%, 27%);
+}
+
+.result-details li:nth-child(4) {
+    background-color: hsla(44, 99%, 50%, 0.671);
 }
 
 .result-details li:not(:first-child) span {
@@ -99,7 +166,7 @@ body {
 }
 
 .result-details p {
-    font-size: 19px;
+    font-size: 1rem;
 }
 
 .result-details li span {
@@ -118,7 +185,7 @@ body {
     padding: 8px 0;
     width: 105px;
     color: var(--color-white);
-    background-color: #fd0a54;
+    background-color: hsl(342, 98%, 52%);
     cursor: pointer;
     border-radius: .5em;
     font-size: 1rem;
